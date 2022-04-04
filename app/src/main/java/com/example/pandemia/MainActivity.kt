@@ -3,6 +3,7 @@ package com.example.pandemia
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Gravity
+import android.widget.TextView
 import android.widget.Toast
 import com.example.pandemia.databinding.ActivityMainBinding
 import kotlinx.coroutines.CoroutineScope
@@ -21,7 +22,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         binding.btnBuscar.setOnClickListener {
             buscarDatosPandemia()
         }
@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
     fun getRetrofit(): Retrofit {
         return Retrofit
             .Builder()
-            .baseUrl("https://disease.sh/v3/covid-19/countries")
+            .baseUrl("https://disease.sh/v3/covid-19/countries/")
             .client(OkHttpClient())
             .addConverterFactory(GsonConverterFactory.create())
             .build()
